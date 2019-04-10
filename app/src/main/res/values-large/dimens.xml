@@ -14,4 +14,6 @@
     <dimen name="dashboard_btn_title_margin_top">3sp</dimen>
     <dimen name="center_icon_size">90sp</dimen>
 
+    <dimen name="search_app_text_edit_layout_height">40dp</dimen>
+
 </resources>

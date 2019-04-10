@@ -1,12 +1,13 @@
 package ir.ac.iust.appstore.activity;
 
-import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
@@ -17,7 +18,6 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import java.util.ArrayList;
@@ -25,6 +25,8 @@ import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.transition.TransitionManager;
+import androidx.transition.TransitionSet;
 import androidx.viewpager.widget.ViewPager;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.fragment.HomeFragment;
@@ -32,6 +34,7 @@ import ir.ac.iust.appstore.model.OnTabClickListener;
 import ir.ac.iust.appstore.model.Tab;
 import ir.ac.iust.appstore.view.ViewTools;
 import ir.ac.iust.appstore.view.adapter.SimpleFragmentPagerAdapter;
+import ir.ac.iust.appstore.view.widget.CustomAutoCompleteTextView;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 import ir.ac.iust.appstore.view.widget.FontHelper;
 
@@ -40,11 +43,17 @@ public class MainActivity extends AppCompatActivity implements OnTabClickListene
     private Drawer drawer;
     private AccountHeader headerDrawer;
     private Toolbar toolbar;
-
     private ViewPager viewPager;
     private SimpleFragmentPagerAdapter viewPagerAdapter;
     private List<Tab> tabs;
     private Tab selectedTab;
+    private ViewGroup mainLayout;
+
+    private CustomAutoCompleteTextView searchAutoCompleteTextView;
+    private boolean searchIsVisible = false;
+    private LinearLayout searchLayout;
+    private LinearLayout searchBtn;
+    private ImageView searchClearBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -103,6 +112,39 @@ public class MainActivity extends AppCompatActivity implements OnTabClickListene
 
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(getTabPosition(selectedTab));
+
+        //config search layout
+        mainLayout = findViewById(R.id.fragment_layout);
+        searchAutoCompleteTextView = findViewById(R.id.search_auto_complete);
+        searchAutoCompleteTextView.setThreshold(2);
+
+        searchLayout = findViewById(R.id.search_category_layout);
+        searchLayout.setVisibility(View.GONE);
+
+        searchBtn = findViewById(R.id.category_search_btn);
+        searchBtn.setOnClickListener(view ->
+        {
+            if (searchIsVisible)
+            {
+                hideSearch();
+            }
+            else
+            {
+                showSearch();
+            }
+        });
+
+        searchClearBtn = (ImageView) findViewById(R.id.search_clear_btn);
+        searchClearBtn.setImageDrawable(new IconicsDrawable(MainActivity.this).icon(MaterialDesignIconic.Icon.gmi_close).color(getResources().getColor(R.color.primary_dark)).sizeDp(12));
+        searchClearBtn.setOnClickListener(view ->
+        {
+            if (searchAutoCompleteTextView.getText().toString().equals(""))
+            {
+                hideSearch();
+            }
+            else
+                searchAutoCompleteTextView.setText("");
+        });
 
         ViewTools.setRTLSupportSettings(getWindow().getDecorView());
     }
@@ -193,5 +235,36 @@ public class MainActivity extends AppCompatActivity implements OnTabClickListene
                 .withHeaderBackground(R.drawable.header)
                 .addProfiles(profile)
                 .withOnAccountHeaderSelectionViewClickListener((view, profile1) -> false);
+    }
+
+    /**
+     * The search bar appears by calling this method
+     */
+    private void showSearch()
+    {
+        if (!searchIsVisible)
+        {
+            TransitionSet set = new TransitionSet();
+            set.setDuration(300);
+            TransitionManager.beginDelayedTransition(mainLayout);
+            searchLayout.setVisibility(View.VISIBLE);
+            searchIsVisible = true;
+            searchAutoCompleteTextView.requestFocus();
+        }
+    }
+    /**
+     * The search bar hide by calling this method
+     */
+    public void hideSearch()
+    {
+        if (searchIsVisible)
+        {
+            searchAutoCompleteTextView.setText("");
+            TransitionSet set = new TransitionSet();
+            set.setDuration(100);
+            TransitionManager.beginDelayedTransition(mainLayout);
+            searchLayout.setVisibility(View.GONE);
+            searchIsVisible = false;
+        }
     }
 }
