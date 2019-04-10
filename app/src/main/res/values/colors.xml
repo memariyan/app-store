@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9a004d</color>
+    <color name="colorPrimaryDark">#8c0046</color>
+    <color name="colorAccent">#AC0156</color>
+    <color name="colorPrimaryPress">#8D0047</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray_0">#f5f5f5</color>
+    <color name="gray_1">#ececec</color>
+    <color name="gray_2">#dadada</color>
+    <color name="gray_3">#b8b8b8</color>
+    <color name="gray_4">#64000000</color>
+    <color name="gray_5">#7b000000</color>
+    <color name="gray_6">#b4000000</color>
+
+</resources>

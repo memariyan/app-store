@@ -1,0 +1,40 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light">
+        <!-- Customize our theme here. -->
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+
+        <item name="android:windowBackground">@color/gray_0</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item><!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item><!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorAccent">@color/colorAccent</item> <!-- colorAccent is used as the default value for colorControlActivated which is used to tint widgets -->
+
+        <!-- MaterialDrawer specific values -->
+        <item name="material_drawer_background">@color/material_drawer_background</item>
+        <item name="material_drawer_primary_text">@color/material_drawer_primary_text</item>
+        <item name="material_drawer_secondary_text">@color/material_drawer_secondary_text</item>
+        <item name="material_drawer_selected">@color/material_drawer_selected</item>
+        <item name="material_drawer_divider">@color/material_drawer_divider</item>
+
+    </style>
+
+
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
+    <style name="horizontal_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/gray_2</item>
+    </style>
+
+    <style name="vertical_divider">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">1dp</item>
+        <item name="android:background">@color/gray_2</item>
+    </style>
+
+</resources>

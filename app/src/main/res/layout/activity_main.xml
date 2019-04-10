@@ -1,0 +1,275 @@
+<LinearLayout android:id="@+id/main_layout"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#eeeeee"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="top"
+            android:elevation="4dp"
+            app:titleTextColor="@color/white"/>
+
+        <ir.ac.iust.appstore.view.widget.CustomTextView
+            android:id="@+id/home_activity_tab_bar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/toolbar"
+            android:layout_marginStart="-10sp"
+            android:singleLine="true"
+            android:textSize="@dimen/text_size_dimen_2"
+            android:text="@string/activity_main_title"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        android:orientation="vertical"
+        android:layout_marginBottom="-38sp">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/main_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/tab_dashboard_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/circle_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="-3sp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle_gray_color"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/tab_items_line"
+                        style="@style/horizontal_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="3sp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="2sp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:src="@color/gray_3"/>
+
+                    <ImageView
+                        android:id="@+id/tab_groups_line"
+                        style="@style/horizontal_divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="3sp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="2sp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:src="@color/gray_3"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/flat_tabs_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.9"
+                    android:background="@color/gray_2"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/tab_items_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/tab_categories_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"
+                            android:padding="@dimen/tab_btn_icon_padding"
+                            android:src="@drawable/icon_categories"/>
+
+                        <ir.ac.iust.appstore.view.widget.CustomTextView
+                            android:id="@+id/tab_categories_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="@string/categories"
+                            android:textColor="@color/gray_5"
+                            android:textSize="@dimen/text_size_dimen_1"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.2"/>
+
+                    <LinearLayout
+                        android:id="@+id/tab_groups_btn"
+                        android:layout_weight="1"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/tab_my_apps_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:padding="@dimen/tab_btn_icon_padding"
+                            android:src="@drawable/icon_my_apps"/>
+
+                        <ir.ac.iust.appstore.view.widget.CustomTextView
+                            android:id="@+id/tab_my_apps_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="@string/my_apps"
+                            android:textColor="@color/gray_5"
+                            android:textSize="@dimen/text_size_dimen_1"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/tab_dashboard_btn"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:padding="2sp"
+                    android:src="@drawable/home_btn"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/dashboard_btn_margin_top"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/tab_dashboard_icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="-3sp"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:padding="@dimen/dashboard_btn_icon_padding"
+                        android:src="@drawable/icon_home"/>
+
+                    <ir.ac.iust.appstore.view.widget.CustomTextView
+                        android:id="@+id/tab_dashboard_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dashboard_btn_title_margin_top"
+                        android:layout_weight="2"
+                        android:gravity="center|top"
+                        android:text="@string/home"
+                        android:textColor="@color/gray_5"
+                        android:textSize="@dimen/text_size_dimen_1"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
