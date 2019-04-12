@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="?android:attr/selectableItemBackground"
+              android:clickable="true"
+              android:focusable="true"
+              android:paddingStart="10sp"
+              android:paddingEnd="10sp"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_gravity="center"
+        android:src="@drawable/icon_app_komod"
+        android:layout_margin="10sp"
+        android:layout_width="@dimen/apps_group_item_image_size"
+        android:layout_height="@dimen/apps_group_item_image_size"
+        android:adjustViewBounds="true"/>
+
+    <ir.ac.iust.appstore.view.widget.CustomTextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="@dimen/text_size_dimen_2"
+        android:text="Komod"
+        android:textColor="@color/gray_5"
+        android:textStyle="bold"/>
+
+</LinearLayout>

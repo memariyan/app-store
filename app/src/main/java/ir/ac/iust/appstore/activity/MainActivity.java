@@ -38,13 +38,13 @@ import ir.ac.iust.appstore.view.widget.CustomAutoCompleteTextView;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 import ir.ac.iust.appstore.view.widget.FontHelper;
 
-public class MainActivity extends AppCompatActivity implements OnTabClickListener
+public class MainActivity extends CustomAppCompatActivity implements OnTabClickListener
 {
     private Drawer drawer;
     private AccountHeader headerDrawer;
     private Toolbar toolbar;
     private ViewPager viewPager;
-    private SimpleFragmentPagerAdapter viewPagerAdapter;
+    private SimpleFragmentPagerAdapter fragmentViewPagerAdapter;
     private List<Tab> tabs;
     private Tab selectedTab;
     private ViewGroup mainLayout;
@@ -94,10 +94,10 @@ public class MainActivity extends AppCompatActivity implements OnTabClickListene
         });
 
         //set tabs with pages
-        viewPagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFrag(HomeFragment.newInstance(), "GroupFragment");
-        viewPagerAdapter.addFrag(HomeFragment.newInstance(), "HomeFragment");
-        viewPagerAdapter.addFrag(HomeFragment.newInstance(), "ChannelFragment");
+        fragmentViewPagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
+        fragmentViewPagerAdapter.addFrag(HomeFragment.newInstance(), "GroupFragment");
+        fragmentViewPagerAdapter.addFrag(HomeFragment.newInstance(), "HomeFragment");
+        fragmentViewPagerAdapter.addFrag(HomeFragment.newInstance(), "ChannelFragment");
 
         Tab myAppsTab = new Tab(Tab.Type.MY_APPS, findViewById(R.id.tab_groups_btn), (ImageView) findViewById(R.id.tab_my_apps_icon), (CustomTextView) findViewById(R.id.tab_my_apps_title), (ImageView) findViewById(R.id.tab_groups_line), this);
         Tab categoriesTab = new Tab(Tab.Type.CATEGORIES, findViewById(R.id.tab_items_btn), (ImageView) findViewById(R.id.tab_categories_icon), (CustomTextView) findViewById(R.id.tab_categories_title), (ImageView) findViewById(R.id.tab_items_line), this);
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements OnTabClickListene
         if (selectedTab == null)
             selectedTab = homeTab;
 
-        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.setAdapter(fragmentViewPagerAdapter);
         viewPager.setCurrentItem(getTabPosition(selectedTab));
 
         //config search layout

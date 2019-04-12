@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="15sp"
+              android:layout_marginEnd="15sp"
+              android:layout_marginBottom="10sp">
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_height="1dp"
+        android:background="@color/gray_2"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="10sp">
+
+        <ir.ac.iust.appstore.view.widget.CustomTextView
+            android:id="@+id/app_group_name"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="My apps"
+            android:textColor="@color/gray_6"
+            android:textSize="@dimen/text_size_dimen_3"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="center">
+
+            <ir.ac.iust.appstore.view.widget.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/all"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/text_size_dimen_2"/>
+
+            <ImageView
+                android:src="@drawable/icon_chevron_right"
+                android:id="@+id/all_apps_btn_chevron_icon"
+                android:layout_width="10sp"
+                android:layout_height="10sp"
+                android:layout_marginStart="3sp"
+                android:adjustViewBounds="true"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:scrollbars="horizontal"
+        android:id="@+id/apps_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

@@ -1,8 +1,10 @@
 package ir.ac.iust.appstore;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 
+import ir.ac.iust.appstore.model.AppContext;
 import ir.ac.iust.appstore.util.LocaleUtil;
 
 public class AppStoreApplication extends Application
@@ -12,14 +14,10 @@ public class AppStoreApplication extends Application
     {
         super.onCreate();
 
-        try
-        {
-            LocaleUtil.setLocale(getApplicationContext(), "fa");
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        Context context=getApplicationContext();
+
+        //initialize appContext
+        AppContext.getInstance().initAppContext(context);
     }
 
     @Override

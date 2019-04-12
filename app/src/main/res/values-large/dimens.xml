@@ -6,14 +6,12 @@
     <dimen name="text_size_dimen_3">21sp</dimen>
     <dimen name="text_size_dimen_4">30sp</dimen>
     <dimen name="text_size_dimen_5">60sp</dimen>
-
     <dimen name="tab_btn_icon_padding">12sp</dimen>
-
     <dimen name="dashboard_btn_margin_top">15sp</dimen>
     <dimen name="dashboard_btn_icon_padding">10sp</dimen>
     <dimen name="dashboard_btn_title_margin_top">3sp</dimen>
     <dimen name="center_icon_size">90sp</dimen>
-
     <dimen name="search_app_text_edit_layout_height">40dp</dimen>
+    <dimen name="apps_group_item_image_size">75sp</dimen>
 
 </resources>

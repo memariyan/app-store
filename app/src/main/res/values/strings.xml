@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">AppStore</string>
 
-    <string name="activity_main_title">اپ استور</string>
-    <string name="my_apps">برنامه های من</string>
-    <string name="categories">دسته بندی ها</string>
-    <string name="home">خانه</string>
-    <string name="search_app">جستجو ...</string>
+    <string name="activity_main_title">App store</string>
+    <string name="my_apps">My apps</string>
+    <string name="categories">Categories</string>
+    <string name="home">Home</string>
+    <string name="search_app">Search ...</string>
+    <string name="all">All</string>
+
 </resources>
