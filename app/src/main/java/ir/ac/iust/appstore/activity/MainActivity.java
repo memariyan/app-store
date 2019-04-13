@@ -23,13 +23,13 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.transition.TransitionManager;
 import androidx.transition.TransitionSet;
 import androidx.viewpager.widget.ViewPager;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.fragment.HomeFragment;
+import ir.ac.iust.appstore.fragment.MyAppsFragment;
 import ir.ac.iust.appstore.model.OnTabClickListener;
 import ir.ac.iust.appstore.model.Tab;
 import ir.ac.iust.appstore.view.ViewTools;
@@ -95,9 +95,9 @@ public class MainActivity extends CustomAppCompatActivity implements OnTabClickL
 
         //set tabs with pages
         fragmentViewPagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
-        fragmentViewPagerAdapter.addFrag(HomeFragment.newInstance(), "GroupFragment");
+        fragmentViewPagerAdapter.addFrag(MyAppsFragment.newInstance(), "GroupFragment");
         fragmentViewPagerAdapter.addFrag(HomeFragment.newInstance(), "HomeFragment");
-        fragmentViewPagerAdapter.addFrag(HomeFragment.newInstance(), "ChannelFragment");
+        fragmentViewPagerAdapter.addFrag(MyAppsFragment.newInstance(), "ChannelFragment");
 
         Tab myAppsTab = new Tab(Tab.Type.MY_APPS, findViewById(R.id.tab_groups_btn), (ImageView) findViewById(R.id.tab_my_apps_icon), (CustomTextView) findViewById(R.id.tab_my_apps_title), (ImageView) findViewById(R.id.tab_groups_line), this);
         Tab categoriesTab = new Tab(Tab.Type.CATEGORIES, findViewById(R.id.tab_items_btn), (ImageView) findViewById(R.id.tab_categories_icon), (CustomTextView) findViewById(R.id.tab_categories_title), (ImageView) findViewById(R.id.tab_items_line), this);

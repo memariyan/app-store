@@ -13,5 +13,6 @@
     <dimen name="center_icon_size">80sp</dimen>
     <dimen name="search_app_text_edit_layout_height">35dp</dimen>
     <dimen name="apps_group_item_image_size">50sp</dimen>
+    <dimen name="activity_tab_height">70dp</dimen>
 
 </resources>

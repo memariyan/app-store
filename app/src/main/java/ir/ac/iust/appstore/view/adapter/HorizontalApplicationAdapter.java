@@ -12,14 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.model.AppContext;
 import ir.ac.iust.appstore.model.Application;
-import ir.ac.iust.appstore.model.ApplicationGroup;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 
-public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.AppGroupItemHolder>
+public class HorizontalApplicationAdapter extends RecyclerView.Adapter<HorizontalApplicationAdapter.AppGroupItemHolder>
 {
     private List<Application> applications;
 
-    public ApplicationAdapter(List<Application> applications)
+    public HorizontalApplicationAdapter(List<Application> applications)
     {
         this.applications = applications;
     }
@@ -27,7 +26,7 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
     @Override
     public AppGroupItemHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_app, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_horizontal_app, parent, false);
         return new AppGroupItemHolder(itemView);
     }
 

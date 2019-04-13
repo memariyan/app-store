@@ -25,9 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:singleLine="true"
-        android:textSize="@dimen/text_size_dimen_2"
+        android:textSize="@dimen/text_size_dimen_1"
         android:text="Komod"
-        android:textColor="@color/gray_5"
+        android:textColor="@color/gray_6"
         android:textStyle="bold"/>
 
 </LinearLayout>

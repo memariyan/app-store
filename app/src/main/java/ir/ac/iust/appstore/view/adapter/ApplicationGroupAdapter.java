@@ -16,11 +16,11 @@ import ir.ac.iust.appstore.model.AppContext;
 import ir.ac.iust.appstore.model.ApplicationGroup;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 
-public class AppsGroupAdapter extends RecyclerView.Adapter<AppsGroupAdapter.AppGroupItemHolder>
+public class ApplicationGroupAdapter extends RecyclerView.Adapter<ApplicationGroupAdapter.AppGroupItemHolder>
 {
     private List<ApplicationGroup> applicationGroups;
 
-    public AppsGroupAdapter(List<ApplicationGroup> applicationGroups)
+    public ApplicationGroupAdapter(List<ApplicationGroup> applicationGroups)
     {
         this.applicationGroups = applicationGroups;
     }
@@ -39,11 +39,11 @@ public class AppsGroupAdapter extends RecyclerView.Adapter<AppsGroupAdapter.AppG
         ApplicationGroup applicationGroup = applicationGroups.get(position);
         holder.title.setText(applicationGroup.getTitle());
 
-        ApplicationAdapter applicationAdapter = new ApplicationAdapter(applicationGroup.getApplications());
+        HorizontalApplicationAdapter horizontalApplicationAdapter = new HorizontalApplicationAdapter(applicationGroup.getApplications());
         holder.appsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         holder.appsRecyclerView.setHasFixedSize(true);
         holder.appsRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, RecyclerView.HORIZONTAL, false));
-        holder.appsRecyclerView.setAdapter(applicationAdapter);
+        holder.appsRecyclerView.setAdapter(horizontalApplicationAdapter);
     }
 
     @Override

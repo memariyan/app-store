@@ -16,7 +16,7 @@ import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.model.Application;
 import ir.ac.iust.appstore.model.ApplicationGroup;
 import ir.ac.iust.appstore.view.ViewTools;
-import ir.ac.iust.appstore.view.adapter.AppsGroupAdapter;
+import ir.ac.iust.appstore.view.adapter.ApplicationGroupAdapter;
 import ir.ac.iust.appstore.view.adapter.SimpleFragmentPagerAdapter;
 import ir.ac.iust.appstore.view.widget.CustomViewPager;
 
@@ -53,18 +53,25 @@ public class HomeFragment extends Fragment
         showSlides();
 
         List<Application> applicationsGroup1 = new ArrayList<Application>();
-        applicationsGroup1.add(new Application("Snapp",R.drawable.icon_app_snapp));
-        applicationsGroup1.add(new Application("Torob",R.drawable.icon_app_torob));
-        applicationsGroup1.add(new Application("Taghche",R.drawable.icon_app_taghche));
-        applicationsGroup1.add(new Application("Komod",R.drawable.icon_app_komod));
+        applicationsGroup1.add(new Application("اسنپ",R.drawable.icon_app_snapp));
+        applicationsGroup1.add(new Application("ترب",R.drawable.icon_app_torob));
+        applicationsGroup1.add(new Application("طاقچه",R.drawable.icon_app_taghche));
+        applicationsGroup1.add(new Application("کمد",R.drawable.icon_app_komod));
+        applicationsGroup1.add(new Application("تلگرام",R.drawable.icon_app_telegram));
+        applicationsGroup1.add(new Application("واتس آپ",R.drawable.icon_app_whatsapp));
 
+        List<Application> applicationsGroup2 = new ArrayList<Application>();
+        applicationsGroup2.add(new Application("شیرایت",R.drawable.icon_app_shareit));
+        applicationsGroup2.add(new Application("اینستاگرام",R.drawable.icon_app_instagram));
+        applicationsGroup2.add(new Application("تلگرام",R.drawable.icon_app_telegram));
+        applicationsGroup2.add(new Application("واتس آپ",R.drawable.icon_app_whatsapp));
 
         List<ApplicationGroup> applicationGroups = new ArrayList<ApplicationGroup>();
         applicationGroups.add(new ApplicationGroup("برنامه های برگزیده",applicationsGroup1));
-        applicationGroups.add(new ApplicationGroup("برنامه های محبوب",new ArrayList<>()));
-        applicationGroups.add(new ApplicationGroup("برنامه های پر دانلود",new ArrayList<>()));
+        applicationGroups.add(new ApplicationGroup("برنامه های محبوب",applicationsGroup2));
+        applicationGroups.add(new ApplicationGroup("برنامه های پر دانلود",applicationsGroup1));
 
-        AppsGroupAdapter appsGroupAdapter = new AppsGroupAdapter(applicationGroups);
+        ApplicationGroupAdapter appsGroupAdapter = new ApplicationGroupAdapter(applicationGroups);
         appsGroupRecyclerView = (RecyclerView) rootView.findViewById(R.id.apps_group_recycler_view);
         appsGroupRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1, RecyclerView.VERTICAL, false));
         appsGroupRecyclerView.setAdapter(appsGroupAdapter);
@@ -80,11 +87,11 @@ public class HomeFragment extends Fragment
         sliderImageFragment1.setImage(BitmapFactory.decodeResource(getResources(), R.drawable.home_slider_img_1));
         imageViewPagerAdapter.addFrag(sliderImageFragment1, "1");
 
-   /*     SliderImageFragment sliderImageFragment2 = new SliderImageFragment();
+        SliderImageFragment sliderImageFragment2 = new SliderImageFragment();
         sliderImageFragment2.setImage(BitmapFactory.decodeResource(getResources(), R.drawable.home_slider_img_2));
         imageViewPagerAdapter.addFrag(sliderImageFragment2, "2");
 
-        SliderImageFragment sliderImageFragment3 = new SliderImageFragment();
+        /*SliderImageFragment sliderImageFragment3 = new SliderImageFragment();
         sliderImageFragment3.setImage(BitmapFactory.decodeResource(getResources(), R.drawable.home_slider_img_3));
         imageViewPagerAdapter.addFrag(sliderImageFragment3, "3");*/
 
