@@ -15,4 +15,10 @@
     <dimen name="apps_group_item_image_size">90sp</dimen>
     <dimen name="activity_tab_height">125dp</dimen>
 
+    <dimen name="category_item_layout_width">130sp</dimen>
+    <dimen name="category_item_image_width">105sp</dimen>
+    <dimen name="category_item_layout_width_mini">100sp</dimen>
+    <dimen name="category_item_image_width_mini">85sp</dimen>
+    <dimen name="category_item_padding">11dp</dimen>
+
 </resources>

@@ -14,5 +14,10 @@
     <dimen name="search_app_text_edit_layout_height">35dp</dimen>
     <dimen name="apps_group_item_image_size">65sp</dimen>
     <dimen name="activity_tab_height">85dp</dimen>
+    <dimen name="category_item_layout_width">110sp</dimen>
+    <dimen name="category_item_image_width">85sp</dimen>
+    <dimen name="category_item_layout_width_mini">80sp</dimen>
+    <dimen name="category_item_image_width_mini">65sp</dimen>
+    <dimen name="category_item_padding">7dp</dimen>
 
 </resources>

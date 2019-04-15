@@ -82,7 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -194,7 +195,14 @@
 
                 </RelativeLayout>
             </RelativeLayout>
+
+
         </LinearLayout>
+
+        <View
+            style="@style/horizontal_divider"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimaryDark"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/main_view_pager"

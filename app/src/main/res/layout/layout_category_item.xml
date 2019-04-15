@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/layout_guild_tree_item_root_view"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:card_view="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="7dp"
+              android:layout_marginEnd="7dp"
+              android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/parent_item_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="3dp"
+        card_view:cardBackgroundColor="@color/primary"
+        card_view:cardCornerRadius="10dp"
+        card_view:contentPaddingTop="3dp"> <!-- Change it to customize the border width -->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/root_item_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            card_view:cardCornerRadius="7dp">
+
+            <LinearLayout
+                android:id="@+id/category_item_layout"
+                android:layout_width="@dimen/category_item_layout_width"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/category_item_padding"
+                >
+
+                <ImageView
+                    android:id="@+id/root_category_item_icon"
+                    android:layout_width="@dimen/category_item_image_width"
+                    android:layout_height="@dimen/category_item_image_width"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/category_icon"/>
+
+                <ir.ac.iust.appstore.view.widget.CustomTextView
+                    android:id="@+id/root_category_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:singleLine="true"
+                    android:text="Test Content"
+                    android:textColor="@color/gray_6"
+                    android:textSize="@dimen/text_size_dimen_1"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
