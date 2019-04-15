@@ -6,6 +6,8 @@
     <color name="colorPrimaryPress">#8D0047</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="white_milk">#FFFFFF</color>
+
     <color name="gray_0">#f5f5f5</color>
     <color name="gray_1">#ececec</color>
     <color name="gray_2">#dadada</color>

@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="top"
+            android:elevation="4dp"
+            app:titleTextColor="@color/white"/>
+
+        <ir.ac.iust.appstore.view.widget.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/toolbar"
+            android:layout_marginStart="-10sp"
+            android:singleLine="true"
+            android:textSize="@dimen/text_size_dimen_2"
+            android:text="@string/activity_app_info_title"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+        <RelativeLayout
+            android:id="@+id/bookmark_btn_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/bookmark_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/bookmark_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:padding="12sp"
+                    android:src="@drawable/icon_bookmark"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            style="@style/horizontal_divider"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"/>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        android:src="@drawable/vector_back"/>
+
+    <ScrollView
+        android:layout_below="@id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:orientation="vertical">
+
+            <ir.ac.iust.appstore.view.widget.CustomCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="2dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="0dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/app_icon"
+                                android:layout_gravity="center"
+                                android:src="@drawable/icon_app_instagram"
+                                android:layout_margin="10sp"
+                                android:layout_width="@dimen/apps_group_item_image_size"
+                                android:layout_height="@dimen/apps_group_item_image_size"
+                                android:adjustViewBounds="true"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <ir.ac.iust.appstore.view.widget.CustomTextView
+                                    android:id="@+id/app_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="اینستاگرام"
+                                    android:layout_marginStart="5sp"
+                                    android:textColor="@color/gray_6"
+                                    android:textSize="@dimen/text_size_dimen_2"
+                                    android:textStyle="bold"/>
+
+                                <ir.ac.iust.appstore.view.widget.CustomTextView
+                                    android:layout_marginTop="5sp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="استودیو هزارتو"
+                                    android:layout_marginStart="5sp"
+                                    android:textColor="@color/gray_4"
+                                    android:textSize="@dimen/text_size_dimen_1"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="10dp"
+                            android:layout_weight="1.4"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ir.ac.iust.appstore.view.widget.CustomButton
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_width="90sp"
+                                android:layout_height="30sp"
+                                android:background="@drawable/rounded_button_background_dark"
+                                android:text="نصب"
+                                android:textColor="@color/white"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginTop="15sp">
+
+                        <ir.ac.iust.appstore.view.widget.CustomTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="اینستاگرام راهی ساده برای عکس برداری و به اشتراک گذاری لحظه هایتان است. دوستان و خانواده خود را دنبال کنید تا در لحظات جذاب آنها ..."
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:lineSpacingExtra="7sp"
+                            android:layout_marginStart="5sp"
+                            android:textColor="@color/gray_4"
+                            android:textSize="@dimen/text_size_dimen_1"
+                            android:textStyle="bold"/>
+
+                        <ir.ac.iust.appstore.view.widget.CustomTextView
+                            android:layout_marginTop="15sp"
+                            android:layout_marginBottom="5sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="بیشتر"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:lineSpacingExtra="5sp"
+                            android:layout_marginStart="5sp"
+                            android:textColor="@color/primary"
+                            android:textSize="@dimen/text_size_dimen_2"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ir.ac.iust.appstore.view.widget.CustomCardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="2dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="0dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/sideLine"
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/primary"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp"
+                            android:paddingTop="20dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:layout_marginStart="10sp"
+                                android:layout_marginEnd="10sp"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/border_primary_color"/>
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:layout_margin="10sp"
+                                        android:src="@drawable/icon_download"/>
+
+                                </RelativeLayout>
+
+                                <ir.ac.iust.appstore.view.widget.CustomTextView
+                                    android:layout_marginTop="10sp"
+                                    android:id="@+id/search_text"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textColor="@color/gray_5"
+                                    android:textSize="@dimen/text_size_dimen_1"
+                                    android:textStyle="bold"
+                                    android:text="22,000,000"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10sp"
+                                android:layout_marginEnd="10sp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/border_primary_color"/>
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:layout_margin="10sp"
+                                        android:src="@drawable/icon_rate"/>
+
+                                </RelativeLayout>
+
+                                <ir.ac.iust.appstore.view.widget.CustomTextView
+                                    android:layout_marginTop="10sp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textColor="@color/gray_5"
+                                    android:textSize="@dimen/text_size_dimen_1"
+                                    android:textStyle="bold"
+                                    android:text="4.8"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10sp"
+                                android:layout_marginEnd="10sp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/border_primary_color"/>
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:layout_margin="10sp"
+                                        android:src="@drawable/icon_social_network"/>
+
+                                </RelativeLayout>
+
+                                <ir.ac.iust.appstore.view.widget.CustomTextView
+                                    android:layout_marginTop="10sp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textColor="@color/gray_5"
+                                    android:textSize="@dimen/text_size_dimen_1"
+                                    android:textStyle="bold"
+                                    android:text="شبکه اجتماعی"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="10sp"
+                                android:layout_marginEnd="10sp"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                >
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:src="@drawable/border_primary_color"/>
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:adjustViewBounds="true"
+                                        android:layout_margin="10sp"
+                                        android:src="@drawable/icon_app_size"/>
+
+                                </RelativeLayout>
+
+                                <ir.ac.iust.appstore.view.widget.CustomTextView
+                                    android:layout_marginTop="10sp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textColor="@color/gray_5"
+                                    android:textSize="@dimen/text_size_dimen_1"
+                                    android:textStyle="bold"
+                                    android:text="10 مگابایت"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="20sp"
+                android:id="@+id/app_images_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <View
+                style="@style/horizontal_divider"
+                android:layout_height="1dp"
+                android:background="@color/gray_3"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="2dp"
+                app:cardElevation="2dp"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="0dp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="3dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/primary"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="15dp"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp"
+                            android:paddingTop="20dp"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <RatingBar
+                                android:id="@+id/ratingBar"
+                                android:numStars="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_centerHorizontal="true"
+                                android:rating="3.5"
+                                />
+
+                            <ir.ac.iust.appstore.view.widget.CustomTextView
+                                android:layout_marginTop="5sp"
+                                android:layout_marginBottom="5sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="امتیاز من به این برنامه"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:lineSpacingExtra="5sp"
+                                android:layout_marginStart="5sp"
+                                android:textColor="@color/gray_5"
+                                android:textSize="@dimen/text_size_dimen_1"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:layout_marginBottom="25sp"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/icon_comment_2"/>
+
+                <ir.ac.iust.appstore.view.widget.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="نظرات کاربران"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:lineSpacingExtra="5sp"
+                    android:layout_marginStart="10sp"
+                    android:textColor="@color/gray_6"
+                    android:textSize="@dimen/text_size_dimen_3"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginBottom="30sp"
+                android:id="@+id/comments_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_comment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        app:backgroundTint="@color/primary"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        app:layout_anchorGravity="bottom|end"
+        android:src="@drawable/icon_comment"/>
+
+</RelativeLayout>

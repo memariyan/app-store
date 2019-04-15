@@ -2,6 +2,7 @@
     <string name="app_name">Washing</string>
 
     <string name="activity_main_title">اپ استور</string>
+    <string name="activity_app_info_title">اطلاعات برنامه</string>
     <string name="my_apps">برنامه های من</string>
     <string name="categories">دسته بندی ها</string>
     <string name="home">خانه</string>

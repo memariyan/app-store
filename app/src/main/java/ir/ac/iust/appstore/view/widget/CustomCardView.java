@@ -10,7 +10,6 @@ import androidx.cardview.widget.CardView;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.view.ViewTools;
 
-
 /**
  * Created by ho on 4/12/2018.
  */
