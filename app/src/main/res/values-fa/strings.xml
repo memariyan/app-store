@@ -8,5 +8,9 @@
     <string name="home">خانه</string>
     <string name="search_app">جستجو ...</string>
     <string name="all">همه</string>
+    <string name="login">ورود به حساب کاربری</string>
+    <string name="username">نام کاربری</string>
+    <string name="password">رمزعبور</string>
+    <string name="ok">تایید</string>
 
 </resources>

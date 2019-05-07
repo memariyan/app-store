@@ -5,7 +5,7 @@
 
     <!-- view background color -->
     <solid
-        android:color="@color/colorPrimaryDark" >
+        android:color="@color/colorPrimaryVeryDark" >
     </solid>
 
     <!-- If you want to add some padding -->
@@ -18,7 +18,7 @@
 
     <!-- Here is the corner radius -->
     <corners
-        android:radius="6dp"   >
+        android:radius="10dp"   >
     </corners>
 
 </shape>
