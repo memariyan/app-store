@@ -91,7 +91,6 @@
             </LinearLayout>
 
             <ir.ac.iust.appstore.view.widget.CustomButton
-                android:id="@+id/check_activation_key_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

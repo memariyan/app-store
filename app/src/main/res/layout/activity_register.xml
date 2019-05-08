@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/color_gradient_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:layout_height="wrap_content"
+        android:src="@drawable/stars_foreground"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_margin="20sp"
+                android:layout_height="match_parent"
+                android:src="@drawable/register_icon"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_weight="0.7"
+            android:orientation="vertical">
+
+            <ir.ac.iust.appstore.view.widget.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_dimen_4"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="@string/register"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/rounded_text_edit_background"
+                        android:orientation="vertical">
+
+                        <ir.ac.iust.appstore.view.widget.CustomEditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:drawablePadding="15dp"
+                            android:hint="@string/username"
+                            android:inputType="text"
+                            android:padding="10dp"
+                            android:textDirection="ltr"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_text_edit_background"
+                        android:orientation="vertical">
+
+                        <ir.ac.iust.appstore.view.widget.CustomEditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:drawablePadding="15dp"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:padding="10dp"
+                            android:textDirection="ltr"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_text_edit_background"
+                        android:orientation="vertical">
+
+                        <ir.ac.iust.appstore.view.widget.CustomEditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:drawablePadding="15dp"
+                            android:hint="@string/password_confirm"
+                            android:inputType="textPassword"
+                            android:padding="10dp"
+                            android:textDirection="ltr"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_text_edit_background"
+                        android:orientation="vertical">
+
+                        <ir.ac.iust.appstore.view.widget.CustomEditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:drawablePadding="15dp"
+                            android:hint="@string/name"
+                            android:inputType="text"
+                            android:padding="10dp"
+                            android:textDirection="ltr"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_text_edit_background"
+                        android:orientation="vertical">
+
+                        <ir.ac.iust.appstore.view.widget.CustomEditText
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:drawablePadding="15dp"
+                            android:hint="@string/mobile"
+                            android:inputType="number"
+                            android:padding="10dp"
+                            android:textDirection="ltr"
+                            />
+                    </LinearLayout>
+
+                    <ir.ac.iust.appstore.view.widget.CustomButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button_background_dark"
+                        android:text="@string/ok"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
