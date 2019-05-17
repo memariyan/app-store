@@ -1,8 +1,17 @@
 package ir.ac.iust.appstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Category
 {
+    @JsonProperty("Id")
+    private int id;
+
+    @JsonProperty("Name")
     private String name;
+
     private int icon;
 
     public Category(String name, int icon)
@@ -29,5 +38,15 @@ public class Category
     public void setIcon(int icon)
     {
         this.icon = icon;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 }

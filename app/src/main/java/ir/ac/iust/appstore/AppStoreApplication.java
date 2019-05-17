@@ -9,6 +9,8 @@ import ir.ac.iust.appstore.util.LocaleUtil;
 
 public class AppStoreApplication extends Application
 {
+    public static final String APP_HOST_ADDRESS="http://localhost:16913";
+
     @Override
     public void onCreate()
     {

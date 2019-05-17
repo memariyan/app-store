@@ -13,16 +13,16 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.model.AppContext;
-import ir.ac.iust.appstore.model.ApplicationGroup;
+import ir.ac.iust.appstore.model.Group;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 
 public class ApplicationGroupAdapter extends RecyclerView.Adapter<ApplicationGroupAdapter.AppGroupItemHolder>
 {
-    private List<ApplicationGroup> applicationGroups;
+    private List<Group> groups;
 
-    public ApplicationGroupAdapter(List<ApplicationGroup> applicationGroups)
+    public ApplicationGroupAdapter(List<Group> groups)
     {
-        this.applicationGroups = applicationGroups;
+        this.groups = groups;
     }
 
     @Override
@@ -36,10 +36,10 @@ public class ApplicationGroupAdapter extends RecyclerView.Adapter<ApplicationGro
     public void onBindViewHolder(final AppGroupItemHolder holder, final int position)
     {
         Context context = holder.itemView.getContext();
-        ApplicationGroup applicationGroup = applicationGroups.get(position);
-        holder.title.setText(applicationGroup.getTitle());
+        Group group = groups.get(position);
+        holder.title.setText(group.getTitle());
 
-        HorizontalApplicationAdapter horizontalApplicationAdapter = new HorizontalApplicationAdapter(applicationGroup.getApplications());
+        HorizontalApplicationAdapter horizontalApplicationAdapter = new HorizontalApplicationAdapter(group.getApplications());
         holder.appsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         holder.appsRecyclerView.setHasFixedSize(true);
         holder.appsRecyclerView.setLayoutManager(new GridLayoutManager(context, 1, RecyclerView.HORIZONTAL, false));
@@ -49,7 +49,7 @@ public class ApplicationGroupAdapter extends RecyclerView.Adapter<ApplicationGro
     @Override
     public int getItemCount()
     {
-        return applicationGroups.size();
+        return groups.size();
     }
 
     class AppGroupItemHolder extends RecyclerView.ViewHolder

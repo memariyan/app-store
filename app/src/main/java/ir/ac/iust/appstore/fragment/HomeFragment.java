@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.model.Application;
-import ir.ac.iust.appstore.model.ApplicationGroup;
+import ir.ac.iust.appstore.model.Group;
 import ir.ac.iust.appstore.view.ViewTools;
 import ir.ac.iust.appstore.view.adapter.ApplicationGroupAdapter;
 import ir.ac.iust.appstore.view.adapter.SimpleFragmentPagerAdapter;
@@ -66,12 +66,12 @@ public class HomeFragment extends Fragment
         applicationsGroup2.add(new Application("تلگرام",R.drawable.icon_app_telegram));
         applicationsGroup2.add(new Application("واتس آپ",R.drawable.icon_app_whatsapp));
 
-        List<ApplicationGroup> applicationGroups = new ArrayList<ApplicationGroup>();
-        applicationGroups.add(new ApplicationGroup("برنامه های برگزیده",applicationsGroup1));
-        applicationGroups.add(new ApplicationGroup("برنامه های محبوب",applicationsGroup2));
-        applicationGroups.add(new ApplicationGroup("برنامه های پر دانلود",applicationsGroup1));
+        List<Group> groups = new ArrayList<Group>();
+        groups.add(new Group("برنامه های برگزیده",applicationsGroup1));
+        groups.add(new Group("برنامه های محبوب",applicationsGroup2));
+        groups.add(new Group("برنامه های پر دانلود",applicationsGroup1));
 
-        ApplicationGroupAdapter appsGroupAdapter = new ApplicationGroupAdapter(applicationGroups);
+        ApplicationGroupAdapter appsGroupAdapter = new ApplicationGroupAdapter(groups);
         appsGroupRecyclerView = (RecyclerView) rootView.findViewById(R.id.apps_group_recycler_view);
         appsGroupRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1, RecyclerView.VERTICAL, false));
         appsGroupRecyclerView.setAdapter(appsGroupAdapter);

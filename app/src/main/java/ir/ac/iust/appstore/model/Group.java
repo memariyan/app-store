@@ -1,13 +1,19 @@
 package ir.ac.iust.appstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
-public class ApplicationGroup
+
+public class Group
 {
     private String title;
+
     private List<Application> applications;
 
-    public ApplicationGroup(String title,List<Application> applications)
+    public Group(String title, List<Application> applications)
     {
         this.title = title;
         this.applications=applications;
