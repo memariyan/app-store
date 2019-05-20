@@ -1,5 +1,7 @@
 package ir.ac.iust.appstore.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -7,8 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.material_design_iconic_typeface_library.MaterialDesignIconic;
@@ -29,17 +37,22 @@ import androidx.transition.TransitionManager;
 import androidx.transition.TransitionSet;
 import androidx.viewpager.widget.ViewPager;
 import ir.ac.iust.appstore.R;
+import ir.ac.iust.appstore.communication.AppStoreWS;
 import ir.ac.iust.appstore.fragment.CategoryFragment;
 import ir.ac.iust.appstore.fragment.HomeFragment;
 import ir.ac.iust.appstore.fragment.MyAppsFragment;
 import ir.ac.iust.appstore.model.AppContext;
+import ir.ac.iust.appstore.model.Application;
 import ir.ac.iust.appstore.model.OnTabClickListener;
+import ir.ac.iust.appstore.model.SearchableModel;
 import ir.ac.iust.appstore.model.Tab;
 import ir.ac.iust.appstore.view.ViewTools;
 import ir.ac.iust.appstore.view.adapter.SimpleFragmentPagerAdapter;
 import ir.ac.iust.appstore.view.widget.CustomAutoCompleteTextView;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
+import ir.ac.iust.appstore.view.widget.DelayAutoCompleteTextView;
 import ir.ac.iust.appstore.view.widget.FontHelper;
+import ir.ac.iust.appstore.view.widget.ProgressBarLoadingIndicator;
 
 public class MainActivity extends CustomAppCompatActivity implements OnTabClickListener
 {
@@ -52,7 +65,7 @@ public class MainActivity extends CustomAppCompatActivity implements OnTabClickL
     private Tab selectedTab;
     private ViewGroup mainLayout;
 
-    private CustomAutoCompleteTextView searchAutoCompleteTextView;
+    private DelayAutoCompleteTextView searchAutoCompleteTextView;
     private boolean searchIsVisible = false;
     private LinearLayout searchLayout;
     private LinearLayout searchBtn;
@@ -120,6 +133,26 @@ public class MainActivity extends CustomAppCompatActivity implements OnTabClickL
         mainLayout = findViewById(R.id.fragment_layout);
         searchAutoCompleteTextView = findViewById(R.id.search_auto_complete);
         searchAutoCompleteTextView.setThreshold(2);
+        searchAutoCompleteTextView.setLoadingIndicator(new ProgressBarLoadingIndicator((ProgressBar) findViewById(R.id.search_loading_indicator)));//show and hide progress bar on search
+        searchAutoCompleteTextView.setAdapter(new SearchApplicationAutocompleteAdapter(this,R.layout.layout_simple_text_list_item));
+        searchAutoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                InputMethodManager imm = (InputMethodManager) MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(MainActivity.this.getCurrentFocus().getWindowToken(), 0);
+
+                SearchableModel searchableModel = (SearchableModel) parent.getItemAtPosition(position);
+                if (searchableModel instanceof Application)
+                {
+                    Intent intent = new Intent(view.getContext(), AppInfoActivity.class);
+                    intent.putExtra(AppInfoActivity.APP_ID_ARG, ((Application)searchableModel).getId());
+                    view.getContext().startActivity(intent);
+                    hideSearch();
+                }
+            }
+        });
 
         searchLayout = findViewById(R.id.search_category_layout);
         searchLayout.setVisibility(View.GONE);
@@ -268,6 +301,87 @@ public class MainActivity extends CustomAppCompatActivity implements OnTabClickL
             TransitionManager.beginDelayedTransition(mainLayout);
             searchLayout.setVisibility(View.GONE);
             searchIsVisible = false;
+        }
+    }
+
+    public class SearchApplicationAutocompleteAdapter extends ArrayAdapter<SearchableModel> implements Filterable
+    {
+        private ArrayList<SearchableModel> resultList;
+
+        public SearchApplicationAutocompleteAdapter(Context context, int textViewResourceId)
+        {
+            super(context, textViewResourceId);
+            this.resultList = new ArrayList<>();
+        }
+
+        @Override
+        public int getCount()
+        {
+            return resultList.size();
+        }
+
+        @Override
+        public SearchableModel getItem(int index)
+        {
+            try
+            {
+                return resultList.get(index);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        @Override
+        public Filter getFilter()
+        {
+            Filter filter = new Filter()
+            {
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint)
+                {
+                    FilterResults filterResults = new FilterResults();
+                    synchronized (filterResults)
+                    {
+                        if (constraint != null)
+                        {
+                            try
+                            {
+
+                                // Retrieve the autocomplete results.
+                                resultList.clear();
+                                resultList.addAll(AppStoreWS.getInstance().searchApplications(constraint.toString()));//connect to web service and search for inserted words
+
+                                // Assign the data to the FilterResults
+                                filterResults.values = resultList;
+                                filterResults.count = resultList.size();
+                            }
+                            catch (Exception e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                        return filterResults;
+                    }
+                }
+
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results)
+                {
+                    if (results != null && results.count > 0)
+                        notifyDataSetChanged();
+                    else
+                        notifyDataSetInvalidated();
+                }
+            };
+            return filter;
+        }
+
+        public void setResultList(List<? extends SearchableModel> list)
+        {
+            resultList.clear();
+            resultList.addAll(list);
         }
     }
 }

@@ -5,11 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.model.Comment;
+import ir.ac.iust.appstore.util.JalaliCalendar;
 import ir.ac.iust.appstore.view.ViewTools;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 
@@ -33,10 +36,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentI
     public void onBindViewHolder(final CommentAdapter.CommentItemHolder holder, final int position)
     {
         Comment comment = comments.get(position);
-        holder.author.setText(comment.getAuthor());
+        holder.author.setText(comment.getAuthor().getFirstName()+" "+comment.getAuthor().getLastName());
         holder.content.setText(comment.getText());
-        holder.date.setText(comment.getDate());
         holder.rate.setRating((float) comment.getRate());
+
+        JalaliCalendar jalaliCalendar = new JalaliCalendar();
+        GregorianCalendar gregorianCalendar = new GregorianCalendar();
+        gregorianCalendar.setTimeInMillis(comment.getDate().getTime());
+        jalaliCalendar.fromGregorian(gregorianCalendar);
+
+        String dateTime= jalaliCalendar.getYear()+"/"+jalaliCalendar.getMonth()+"/"+jalaliCalendar.getDay();
+        holder.date.setText(dateTime);
     }
 
     @Override

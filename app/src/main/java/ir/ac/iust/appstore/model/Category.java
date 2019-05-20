@@ -14,6 +14,10 @@ public class Category
 
     private int icon;
 
+    public Category()
+    {
+    }
+
     public Category(String name, int icon)
     {
         this.name = name;

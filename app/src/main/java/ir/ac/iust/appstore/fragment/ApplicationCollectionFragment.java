@@ -1,5 +1,9 @@
 package ir.ac.iust.appstore.fragment;
 
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -47,17 +51,16 @@ public class ApplicationCollectionFragment extends Fragment
         View rootView= inflater.inflate(R.layout.fragment_application_list, container, false);
 
         List<Application> applications = new ArrayList<Application>();
-        applications.add(new Application("اسنپ",R.drawable.icon_app_snapp));
-        applications.add(new Application("ترب",R.drawable.icon_app_torob));
-        applications.add(new Application("طاقچه",R.drawable.icon_app_taghche));
-        applications.add(new Application("کمد",R.drawable.icon_app_komod));
-        applications.add(new Application("تلگرام",R.drawable.icon_app_telegram));
-        applications.add(new Application("واتس آپ",R.drawable.icon_app_whatsapp));
-        applications.add(new Application("شیرایت",R.drawable.icon_app_shareit));
-        applications.add(new Application("اینستاگرام",R.drawable.icon_app_instagram));
+
+        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        List<ResolveInfo> pkgAppsList = getActivity().getPackageManager().queryIntentActivities( mainIntent, 0);
+        for(ResolveInfo app : pkgAppsList)
+        {
+            applications.add(new Application(app.loadLabel(getActivity().getPackageManager()).toString(),app.loadIcon(getActivity().getPackageManager()),app.activityInfo.packageName));
+        }
 
         VerticalApplicationAdapter appsAdapter = new VerticalApplicationAdapter(applications);
-
         appsRecyclerView = rootView.findViewById(R.id.apps_recycler_view);
         appsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1, RecyclerView.VERTICAL, false));
         appsRecyclerView.setAdapter(appsAdapter);

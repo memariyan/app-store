@@ -7,19 +7,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import ir.ac.iust.appstore.R;
 import ir.ac.iust.appstore.model.Comment;
+import ir.ac.iust.appstore.model.Image;
 import ir.ac.iust.appstore.view.ViewTools;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 
 public class ApplicationImageAdapter extends RecyclerView.Adapter<ApplicationImageAdapter.ImageItemHolder>
 {
-    private List<Drawable> images;
+    private List<Image> images;
 
-    public ApplicationImageAdapter(List<Drawable> images)
+    public ApplicationImageAdapter(List<Image> images)
     {
         this.images = images;
     }
@@ -34,8 +37,8 @@ public class ApplicationImageAdapter extends RecyclerView.Adapter<ApplicationIma
     @Override
     public void onBindViewHolder(final ApplicationImageAdapter.ImageItemHolder holder, final int position)
     {
-        Drawable image = images.get(position);
-        holder.image.setImageDrawable(image);
+        Image image = images.get(position);
+        Glide.with(holder.itemView.getContext()).load(image.getUrl()).into(holder.image);
     }
 
     @Override
@@ -52,7 +55,6 @@ public class ApplicationImageAdapter extends RecyclerView.Adapter<ApplicationIma
         {
             super(view);
             image = (ImageView) view.findViewById(R.id.app_image);
-
         }
     }
 }

@@ -13,7 +13,7 @@ public class Comment
     private int id;
 
     @JsonProperty("DateTime")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-ddTHH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date date;
 
     @JsonProperty("UserRate")
@@ -24,6 +24,12 @@ public class Comment
 
     @JsonProperty("User")
     private User author;
+
+    private Application application;
+
+    public Comment()
+    {
+    }
 
     public Comment(User author, Date date, double rate, String text)
     {
@@ -81,5 +87,15 @@ public class Comment
     public void setText(String text)
     {
         this.text = text;
+    }
+
+    public Application getApplication()
+    {
+        return application;
+    }
+
+    public void setApplication(Application application)
+    {
+        this.application = application;
     }
 }

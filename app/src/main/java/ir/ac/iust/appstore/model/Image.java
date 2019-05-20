@@ -1,10 +1,12 @@
 package ir.ac.iust.appstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import ir.ac.iust.appstore.AppStoreApplication;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Image
 {
     public enum Type
@@ -25,4 +27,29 @@ public class Image
 
     @JsonProperty("Type")
     private Type type;
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public Type getType()
+    {
+        return type;
+    }
+
+    public void setType(Type type)
+    {
+        this.type = type;
+    }
+
+    public String getUrl()
+    {
+        return BASE_URL_ADDRESS+name;
+    }
 }

@@ -1,6 +1,8 @@
 package ir.ac.iust.appstore.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +12,10 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import ir.ac.iust.appstore.R;
+import ir.ac.iust.appstore.activity.AppInfoActivity;
 import ir.ac.iust.appstore.model.AppContext;
 import ir.ac.iust.appstore.model.Application;
+import ir.ac.iust.appstore.view.widget.CustomButton;
 import ir.ac.iust.appstore.view.widget.CustomTextView;
 
 public class VerticalApplicationAdapter extends RecyclerView.Adapter<VerticalApplicationAdapter.AppGroupItemHolder>
@@ -36,7 +40,7 @@ public class VerticalApplicationAdapter extends RecyclerView.Adapter<VerticalApp
         Context context = holder.itemView.getContext();
         Application application = applications.get(position);
         holder.title.setText(application.getName());
-        holder.icon.setImageResource(application.getIconRes());
+        holder.icon.setImageDrawable(application.getIcon());
     }
 
     @Override
@@ -49,13 +53,22 @@ public class VerticalApplicationAdapter extends RecyclerView.Adapter<VerticalApp
     {
         CustomTextView title;
         ImageView icon;
+        CustomButton actionBtn;
 
         AppGroupItemHolder(View view)
         {
             super(view);
 
+            actionBtn = view.findViewById(R.id.action_btn);
             title = (CustomTextView) view.findViewById(R.id.app_name);
             icon = view.findViewById(R.id.app_icon);
+
+            actionBtn.setOnClickListener(view1 ->
+            {
+                Context context = itemView.getContext();
+                PackageManager pm =  itemView.getContext().getPackageManager();
+                context.startActivity(pm.getLaunchIntentForPackage(applications.get(getAdapterPosition()).getPackageName()));
+            });
 
             if (AppContext.getInstance().languageIsRTL())
             {

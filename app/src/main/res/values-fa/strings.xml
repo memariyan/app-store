@@ -18,4 +18,13 @@
 
     <string name="ok">تایید</string>
 
+    <string name="not_exist_any_download">فایلی برای دانلود وجود ندارد...</string>
+    <string name="download_status_prepared">آماده برای دانلود ...</string>
+    <string name="download_status_downloading">در حال دانلود ...</string>
+    <string name="download_status_downloaded">دانلود شده ...</string>
+    <string name="download_status_paused">متوقف شده ...</string>
+    <string name="download_status_unzipping">در حال آماده سازی ...</string>
+    <string name="empty_content"></string>
+
+
 </resources>

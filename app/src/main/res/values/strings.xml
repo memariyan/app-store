@@ -18,8 +18,13 @@
     <string name="mobile">Mobile</string>
     <string name="ok">Ok</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_login">LoginActivity</string>
+    <!--download activity-->
+    <string name="not_exist_any_download">Not exist any file for download...</string>
+    <string name="download_status_prepared">prepared for download...</string>
+    <string name="download_status_downloading">downloading...</string>
+    <string name="download_status_downloaded">downloaded...</string>
+    <string name="download_status_paused">paused...</string>
+    <string name="download_status_unzipping">preparing...</string>
+    <string name="empty_content"></string>
 
 </resources>

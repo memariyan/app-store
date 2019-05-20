@@ -13,8 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import ir.ac.iust.appstore.R;
+import ir.ac.iust.appstore.communication.AppStoreWS;
 import ir.ac.iust.appstore.model.Application;
 import ir.ac.iust.appstore.model.Group;
+import ir.ac.iust.appstore.model.api.BaseTaskHandler;
 import ir.ac.iust.appstore.view.ViewTools;
 import ir.ac.iust.appstore.view.adapter.ApplicationGroupAdapter;
 import ir.ac.iust.appstore.view.adapter.SimpleFragmentPagerAdapter;
@@ -25,6 +27,7 @@ public class HomeFragment extends Fragment
     private SimpleFragmentPagerAdapter imageViewPagerAdapter;
     private CustomViewPager imageViewPager;
     private RecyclerView appsGroupRecyclerView;
+    private List<Group> groups;
 
     public HomeFragment()
     {
@@ -52,30 +55,40 @@ public class HomeFragment extends Fragment
         topViewPager.addView(imageViewPager.getView());
         showSlides();
 
-        List<Application> applicationsGroup1 = new ArrayList<Application>();
-        applicationsGroup1.add(new Application("اسنپ",R.drawable.icon_app_snapp));
-        applicationsGroup1.add(new Application("ترب",R.drawable.icon_app_torob));
-        applicationsGroup1.add(new Application("طاقچه",R.drawable.icon_app_taghche));
-        applicationsGroup1.add(new Application("کمد",R.drawable.icon_app_komod));
-        applicationsGroup1.add(new Application("تلگرام",R.drawable.icon_app_telegram));
-        applicationsGroup1.add(new Application("واتس آپ",R.drawable.icon_app_whatsapp));
-
-        List<Application> applicationsGroup2 = new ArrayList<Application>();
-        applicationsGroup2.add(new Application("شیرایت",R.drawable.icon_app_shareit));
-        applicationsGroup2.add(new Application("اینستاگرام",R.drawable.icon_app_instagram));
-        applicationsGroup2.add(new Application("تلگرام",R.drawable.icon_app_telegram));
-        applicationsGroup2.add(new Application("واتس آپ",R.drawable.icon_app_whatsapp));
-
-        List<Group> groups = new ArrayList<Group>();
-        groups.add(new Group("برنامه های برگزیده",applicationsGroup1));
-        groups.add(new Group("برنامه های محبوب",applicationsGroup2));
-        groups.add(new Group("برنامه های پر دانلود",applicationsGroup1));
+        groups = new ArrayList<Group>();
+        groups.add(new Group("جدیدترین ها",new ArrayList<Application>()));
+        groups.add(new Group("محبوب ترین ها",new ArrayList<Application>()));
 
         ApplicationGroupAdapter appsGroupAdapter = new ApplicationGroupAdapter(groups);
         appsGroupRecyclerView = (RecyclerView) rootView.findViewById(R.id.apps_group_recycler_view);
         appsGroupRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1, RecyclerView.VERTICAL, false));
         appsGroupRecyclerView.setAdapter(appsGroupAdapter);
 
+        AppStoreWS.getInstance().getNewApplications(new BaseTaskHandler()
+        {
+            @Override
+            public void onSuccess(Object... results)
+            {
+                groups.get(0).setApplications((List<Application>) results[0]);
+                appsGroupAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onFailure(String reason)
+            { }
+        });
+
+        AppStoreWS.getInstance().getMostDownloadApplications(new BaseTaskHandler()
+        {
+            @Override
+            public void onSuccess(Object... results)
+            {
+                groups.get(1).setApplications((List<Application>) results[0]);
+                appsGroupAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onFailure(String reason)
+            { }
+        });
         ViewTools.setRTLSupportSettings(rootView);
 
         return rootView;

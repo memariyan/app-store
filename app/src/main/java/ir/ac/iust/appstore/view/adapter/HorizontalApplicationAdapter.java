@@ -2,10 +2,14 @@ package ir.ac.iust.appstore.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 import java.util.List;
 
@@ -38,7 +42,8 @@ public class HorizontalApplicationAdapter extends RecyclerView.Adapter<Horizonta
         Context context = holder.itemView.getContext();
         Application application = applications.get(position);
         holder.title.setText(application.getName());
-        holder.icon.setImageResource(application.getIconRes());
+
+        Glide.with(context).load(application.getLogo().getUrl()).into(holder.icon);
     }
 
     @Override
@@ -64,6 +69,7 @@ public class HorizontalApplicationAdapter extends RecyclerView.Adapter<Horizonta
             rootLayout.setOnClickListener(v ->
             {
                 Intent intent = new Intent(view.getContext(), AppInfoActivity.class);
+                intent.putExtra(AppInfoActivity.APP_ID_ARG, applications.get(getAdapterPosition()).getId());
                 view.getContext().startActivity(intent);
             });
 
